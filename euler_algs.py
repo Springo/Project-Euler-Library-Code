@@ -1,4 +1,24 @@
+"""
+AUTHOR: Kevin Xia
+
+PURPOSE:
+    Create a general-use library for generic algorithms.
+
+DEVELOPER NOTES:
+    None
+"""
+
+# =============================================================================
+# Libraries and Global Variables
+# =============================================================================
+
+# =============================================================================
+
 def binarySearch(li, val):
+    """
+    Returns the index of the first occurrence of val within the sorted list, li.
+    Returns -1 if element is not found.
+    """
     bot = 0
     top = len(li)
     mid = (bot + top) // 2

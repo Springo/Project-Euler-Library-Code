@@ -1,8 +1,28 @@
+"""
+AUTHOR: Kevin Xia
+
+PURPOSE:
+    Create a general-use library for number theory problems.
+
+DEVELOPER NOTES:
+    When using any of these functions, make sure to call setPrimeList to generate
+    a memo of prime numbers for this script. Use the a limit higher than the highest
+    prime number than you think you will need. Internal prime list is set to store
+    all prime numbers below 100,000 by default.
+"""
+
+# =============================================================================
+# Libraries and Global Variables
+# =============================================================================
+
 import fractions
 
 primelist = []
 
+# =============================================================================
+
 def isPrime(n):
+    """Checks if n is a prime number."""
     if n < 2:
         return False
     if n == 2:
@@ -13,6 +33,7 @@ def isPrime(n):
     return True
 
 def sieveOfErat(n):
+    """Returns a list of all primes up to n."""
     primes = []
     numlist = [1] * n
     for i in range(2, n):
@@ -23,6 +44,7 @@ def sieveOfErat(n):
     return primes
 
 def primeFactorize(n):
+    """Returns a sorted list of all prime factors of n."""
     faclist = []
     num = n
     ind = 0
@@ -35,6 +57,7 @@ def primeFactorize(n):
     return faclist
 
 def totient(n):
+    """Returns the number of integers below n that are relatively prime to n."""
     amount = 0
     for k in range(1, n + 1):
         if fractions.gcd(n, k) == 1:
@@ -42,6 +65,7 @@ def totient(n):
     return amount
 
 def totientVals(n):
+    """Returns a list of all integers below n that are relatively prime to n."""
     faclist = set(primeFactorize(n))
     vals = [1]
     plist = [_ for _ in primelist if _ not in faclist and _ < n]
@@ -49,6 +73,7 @@ def totientVals(n):
     return sorted(vals)
 
 def _totientVHelp(base, cap, plist):
+    """Helper function for totientVals."""
     curlist = []
     nlist = plist[:]
     for p in plist:
@@ -61,6 +86,7 @@ def _totientVHelp(base, cap, plist):
     return curlist
 
 def setPrimeList(n):
+    """Sets the internal prime number list for other functions."""
     global primelist
     primelist = sieveOfErat(n)
 
