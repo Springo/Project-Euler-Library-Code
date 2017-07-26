@@ -22,14 +22,20 @@ def binarySearch(li, val):
     bot = 0
     top = len(li)
     mid = (bot + top) // 2
-    while li[mid] != val and bot < top:
+    found = -1
+    done = False
+    while not done and bot < top:
         if li[mid] < val:
             bot = mid + 1
+        elif li[mid] == val:
+            found = mid
+            if found == 0 or li[found - 1] != li[found]:
+                done = True
+            else:
+                top = mid
         else:
             top = mid
         mid = (bot + top) // 2
     if bot >= top:
         return -1
-    while mid > 0 and li[mid - 1] == val:
-        mid -= 1
-    return mid
+    return found
