@@ -1,5 +1,5 @@
 """
-AUTHOR: Kevin Xia
+AUTHOR: Kevin Xia and Ian Renfro
 
 PURPOSE:
     Create a general-use library for number theory problems.
@@ -16,7 +16,7 @@ DEVELOPER NOTES:
 # =============================================================================
 
 import fractions
-
+from math import sqrt
 primelist = []
 
 # =============================================================================
@@ -32,16 +32,25 @@ def isPrime(n):
             return False
     return True
 
-def sieveOfErat(n):
+def sieveOfErat(high):
     """Returns a list of all primes up to n."""
     primes = []
-    numlist = [1] * n
-    for i in range(2, n):
+    numlist = [1] * high
+    for i in range(2, high):
         if numlist[i] == 1:
             primes.append(i)
-            for j in range(i, n, i):
+            for j in range(i, high, i):
                 numlist[j] = 0
     return primes
+
+def rangedSieveOfErat(i, j):
+    """
+    :param i: lower number of the range
+    :param j: higher number of the range
+    :return: returns the set of primes within the range of numbers
+    """
+    primes = sieveOfErat(int(sqrt(j)))
+    return [n for n in range(i, j) if all(n % p for p in primes)]
 
 def primeFactorize(n):
     """Returns a sorted list of all prime factors of n."""
