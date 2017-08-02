@@ -1,4 +1,20 @@
+"""
+AUTHOR: Kevin Xia
+
+PURPOSE:
+    Create a general-use library for geometry problems.
+
+DEVELOPER NOTES:
+    None
+"""
+
+# =============================================================================
+# Libraries and Global Variables
+# =============================================================================
+
 from fractions import gcd
+
+# =============================================================================
 
 def genPrimPythTriples(perimcap):
     """
