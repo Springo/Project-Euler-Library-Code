@@ -39,3 +39,14 @@ def binarySearch(li, val):
     if bot >= top:
         return -1
     return found
+
+def isSquare(n):
+    """Returns True if n is a perfect square."""
+    x = n // 2
+    seen = set([x])
+    while x * x != n:
+        x = (x + (n // x)) // 2
+        if x in seen:
+            return False
+        seen.add(x)
+    return True
