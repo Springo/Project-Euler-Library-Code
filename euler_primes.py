@@ -64,6 +64,32 @@ def totient(n):
             amount += 1
     return amount
 
+def totientFromSieve(n):
+    """Returns an entry from totientlist."""
+    global totientlist
+    return totientlist[n]
+
+def totientSieve(n):
+    """Returns a list of all totient values up to n."""
+    phi = [0] * n
+    phi[1] = 1
+    for i in range(2, n):
+        if phi[i] == 0:
+            phi[i] = i - 1
+            j = 2
+            while i * j < n:
+                if phi[j] == 0:
+                    j += 1
+                    continue
+                q = j
+                f = i - 1
+                while q % i == 0:
+                    f = f * i
+                    q = q // i
+                phi[i * j] = f * phi[q]
+                j += 1
+    return phi
+
 def totientVals(n):
     """Returns a list of all integers below n that are relatively prime to n."""
     faclist = set(primeFactorize(n))
@@ -90,4 +116,10 @@ def setPrimeList(n):
     global primelist
     primelist = sieveOfErat(n)
 
+def setTotientList(n):
+    """Sets the internal totient list for other functions."""
+    global totientlist
+    totientlist = totientSieve(n)
+
 primelist = sieveOfErat(100000)
+totientlist = totientSieve(10000)
