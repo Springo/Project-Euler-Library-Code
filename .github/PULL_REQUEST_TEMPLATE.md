@@ -1,5 +1,5 @@
 ## Goal
-[Replace with goal]
+*Replace with goal*
 
 ## Things To Do
 - [ ] Task1
