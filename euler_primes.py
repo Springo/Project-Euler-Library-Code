@@ -43,6 +43,16 @@ def sieveOfErat(n):
                 numlist[j] = 0
     return primes
 
+def rangedSieveOfErat(i, j):
+    """
+    :param i: lower number of the range
+    :param j: higher number of the range
+    :return: returns the set of primes within the range of numbers
+    """
+    primes = sieveOfErat(int(sqrt(j)))
+    return [n for n in range(i, j) if all(n % p for p in primes)]
+
+
 def primeFactorize(n):
     """Returns a sorted list of all prime factors of n."""
     faclist = []
