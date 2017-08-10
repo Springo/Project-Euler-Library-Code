@@ -1,6 +1,15 @@
-## Description
+## Current Behavior
 
-*Describe problem and desired outcome.*
+*Describe problem.*
+
+## Expected Behavior
+
+*Describe desired outcome.*
+
+## Instructions to Reproduce Issue
+
+1. Step 1
+2. Step 2
 
 ## Solution Ideas
 
