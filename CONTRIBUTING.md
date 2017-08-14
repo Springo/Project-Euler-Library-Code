@@ -4,15 +4,13 @@
  - [Commit Message Format](#commit-message-format)
  
 ## Pull Request Guidelines
-Pull requests should be created with a short description in the title.
+Pull requests should be created with a the pull request template.  Pull requests should also include a short description in the title.
 
-The body of the pull request can contain a larger description of the changes and 
-screenshots, if necessary. The associated branch can have one or more commits until it has at least one thumbs up, until we have more contributors.
+The associated branch can have one or more commits until it has at least one thumbs up, until we have more contributors.
 ```
 <Short Description>
 <BLANK LINE>
-<Longer Description>
-(<Screenshots>)
+<Insert Pull Request Template>
 ```
 
 After one or more core team members have given it a **Thumbs Up**:
@@ -21,13 +19,22 @@ After one or more core team members have given it a **Thumbs Up**:
 3. If the Merge Request still displays the old commits, then close and re-open the request.
  
 ## Rebasing / Squashing Commits
+
+### Bash
+1. Find out how many new commits there are on the branch
+2. Run the command ```git rebase -i HEAD~<Number of new commits on your branch>```
+3. Replace pick with squash on the lines until you have between 8 to 10 commits, you can also replace pick with reword to change the commit message
+4. Save and close the editor window
+5. Change the squashed commits' messages if needed, following the [commit message format](#commit-message-format)
+
+### IntelliJ
 1. Fetch the latest changes by going to VCS->Git->Fetch
 2. Check out the latest version of master to your local branches.
 3. Go to VCS->Git->Rebase.
 4. Select the branch you want to rebase in the `Branch:` dropdown.
 5. Select Interactive option.
 6. Select your local master branch in the `Onto:` dropdown and continue.
-7. For the `Action` dropdowns, select `squash` for all commits except the first and continue.
+7. For the `Action` dropdowns, select `squash` for all commits except the first 8 to 10 and continue.
 8. Resolve any merge conflicts that come up by using the `Merge...` button.
 9. Follow the [commit message format](#commit-message-format) when prompted for a commit message.
  
@@ -73,5 +80,5 @@ If the commit reverts a previous commit, it should begin with `revert: `, follow
 
 ### Sample Commit
 ```
-fix: sytax error on function 
+fix: syntax error on function 
 ```
